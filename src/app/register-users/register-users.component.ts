@@ -11,7 +11,7 @@ import { RegisterUsersRestClientService } from '../services/register-users-rest-
 })
 export class RegisterUsersComponent implements OnInit {
 
-  private registerForm: FormGroup;
+  registerForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
