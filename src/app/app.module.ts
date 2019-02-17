@@ -15,7 +15,6 @@ import { StorageService } from './services/storage.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { RegisterUsersRestClientService } from './services/register-users-rest-client.service';
-import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
