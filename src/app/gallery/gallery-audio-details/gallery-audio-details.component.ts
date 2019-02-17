@@ -15,7 +15,8 @@ export class GalleryAudioDetailsComponent implements OnInit {
   audio: any;
   clips: any[];
   clipForm: FormGroup;
-
+  secondStart: number;
+  secondEnd: number;
 
 
   constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
@@ -54,9 +55,16 @@ export class GalleryAudioDetailsComponent implements OnInit {
     const clip = { "name": name, "secondStart": secondStart, "secondEnd": secondEnd, "audioName": this.audio.name };
     this.detailsRestClient.createAudioClip(clip).subscribe(response => {
       this.getAudiosClips();
+      this.clipForm.reset();
     })
-
   }
 
+  public watchClip(i): void {
+    this.secondStart = Number(this.clips[i].secondStart);
+    this.secondEnd = Number(this.clips[i].secondEnd);
+    this.audio.url + "#t=" + this.secondStart + "," + this.secondEnd;
+    document.getElementById("audio").setAttribute("src", this.audio.url + "#t=" + this.secondStart + "," + this.secondEnd);
+    document.getElementById("audio").setAttribute("autoplay", "autoplay");
+  }
 
 }

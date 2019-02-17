@@ -15,7 +15,9 @@ export class GalleryVideoDetailsComponent implements OnInit {
   video: any;
   clipForm: FormGroup;
   clips: any[];
-  
+  secondStart: number;
+  secondEnd: number;
+
 
 
 
@@ -55,8 +57,17 @@ export class GalleryVideoDetailsComponent implements OnInit {
     const clip = { "name": name, "secondStart": secondStart, "secondEnd": secondEnd, "videoName": this.video.name };
     this.detailsRestClient.createVideoClip(clip).subscribe(response => {
       this.getVideosClips();
+      this.clipForm.reset();
     })
 
+  }
+
+  public watchClip(i): void {
+    this.secondStart = Number(this.clips[i].secondStart);
+    this.secondEnd = Number(this.clips[i].secondEnd);
+    this.video.url + "#t=" + this.secondStart + "," + this.secondEnd;
+    document.getElementById("video").setAttribute("src", this.video.url + "#t=" + this.secondStart + "," + this.secondEnd);
+    document.getElementById("video").setAttribute("autoplay", "autoplay");
   }
 
 
