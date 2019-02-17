@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="justify-content-center flex-column">
+        <img height="200px" [src]="image?.url" controls>
+
+        <h1>Detalles</h1>
+        <table class="table table-sm table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Pais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{image.name}}</td>
+                    <td>{{image.title}}</td>
+                    <td>{{image.author}}</td>
+                    <td>{{image.date  | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{image.city}}</td>
+                    <td>{{image.country}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

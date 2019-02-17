@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="justify-content-center flex-column">
+        <video height="200px" [src]="video?.url" controls></video>
+
+        <h1>Detalles</h1>
+        <table class="table table-sm table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Pais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{video.name}}</td>
+                    <td>{{video.title}}</td>
+                    <td>{{video.author}}</td>
+                    <td>{{video.date  | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{video.city}}</td>
+                    <td>{{video.country}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>clips</h1>
+        <table class="table table-sm table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Segundo de Inicio</th>
+                    <th scope="col">Segundo de Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let clip of clips; let i = index">
+                    <th scope="row">{{i}}</th>
+                    <td>{{clip.name}}</td>
+                    <td>{{clip.secondStart}}</td>
+                    <td>{{clip.secondEnd}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>Agregar Clip</h1>
+
+        <form [formGroup]="clipForm" (ngSubmit)="submit()" novalidate>
+            <div class="form-group">
+                <label for="inputClipName">Nombre del clip</label>
+                <input formControlName="name" type="text" class="form-control" id="inputClipName"
+                    placeholder="Nombre del clip">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputSecondStart">Segundo de inicio</label>
+                    <input formControlName="secondStart" type="text" class="form-control" id="inputSecondStart"
+                        placeholder="Ejemplo 10">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputSecondEnd">Segundo Fin</label>
+                    <input formControlName="secondEnd" type="text" class="form-control" id="inputSecondEnd"
+                        placeholder="Ejemplo 20">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!clipForm.valid">Agregar Clip</button>
+        </form>
+
+
+
+    </div>
+
+</div>

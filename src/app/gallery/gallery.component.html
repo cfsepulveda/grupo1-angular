@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <h1>Galeria</h1>
+
+  <div class="row">
+    <div class="col-sm-auto" *ngFor="let videoGallery of storageService.videosGallery ; let i = index">
+      <div class="card" style="width: 18rem;">
+        <video height="200px" [src]="videoGallery.url" controls></video>
+        <div class="card-body">
+          <h5 class="card-title">{{videoGallery.title}}</h5>
+          <p class="card-text">{{videoGallery.author}}</p>
+          <p class="card-text">{{videoGallery.date | date: 'dd/MM/yyyy'}}</p>
+          <a routerLink="video-details/{{i}}" class="btn btn-primary">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-auto" *ngFor="let imageGallery of storageService.imagesGallery ; let i = index">
+      <div class="card" style="width: 18rem;">
+        <img height="200px" [src]="imageGallery.url">
+        <div class="card-body">
+          <h5 class="card-title">{{imageGallery.title}}</h5>
+          <p class="card-text">{{imageGallery.author}}</p>
+          <p class="card-text">{{imageGallery?.date | date: 'dd/MM/yyyy'}}</p>
+          <a routerLink="image-details/{{i}}" class="btn btn-primary">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-auto" *ngFor="let audioGallery of storageService.audiosGallery ; let i = index">
+      <div class="card" style="width: 18rem;">
+        <div style="width:90%">
+          <audio [src]="audioGallery.url" controls></audio>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{audioGallery.title}}</h5>
+          <p class="card-text">{{audioGallery.author}}</p>
+          <p class="card-text">{{audioGallery?.date | date: 'dd/MM/yyyy'}}</p>
+          <a routerLink="audio-details/{{i}}" class="btn btn-primary">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
