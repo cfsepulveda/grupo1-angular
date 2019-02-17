@@ -3,6 +3,8 @@ import { DetailsRestClient } from 'src/app/services/details-rest-client.service'
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-gallery-video-details',
@@ -21,7 +23,11 @@ export class GalleryVideoDetailsComponent implements OnInit {
 
 
 
-  constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
+  constructor(public storageService: StorageService,
+    private route: ActivatedRoute,
+    private detailsRestClient: DetailsRestClient,
+    private formBuilder: FormBuilder,
+    private location: Location,
   ) {
     this.getVideoDetails();
     this.getVideosClips();
@@ -70,5 +76,9 @@ export class GalleryVideoDetailsComponent implements OnInit {
     document.getElementById("video").setAttribute("autoplay", "autoplay");
   }
 
+
+  goBack(): void {
+    this.location.back();
+  }
 
 }

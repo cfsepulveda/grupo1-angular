@@ -3,6 +3,8 @@ import { DetailsRestClient } from 'src/app/services/details-rest-client.service'
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-gallery-audio-details',
@@ -19,7 +21,11 @@ export class GalleryAudioDetailsComponent implements OnInit {
   secondEnd: number;
 
 
-  constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
+  constructor(public storageService: StorageService, 
+    private route: ActivatedRoute, 
+    private detailsRestClient: DetailsRestClient,
+     private formBuilder: FormBuilder,
+     private location: Location
   ) {
     this.getAudioDetails();
     this.getAudiosClips();
@@ -65,6 +71,10 @@ export class GalleryAudioDetailsComponent implements OnInit {
     this.audio.url + "#t=" + this.secondStart + "," + this.secondEnd;
     document.getElementById("audio").setAttribute("src", this.audio.url + "#t=" + this.secondStart + "," + this.secondEnd);
     document.getElementById("audio").setAttribute("autoplay", "autoplay");
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
