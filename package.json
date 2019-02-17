@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm i | ng build --aot --prod | node server.js",
+    "start": " npm i | npm install -g angular-cli | ng build --aot --prod | node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
