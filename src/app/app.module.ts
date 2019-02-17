@@ -13,6 +13,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DetailsRestClient } from './services/details-rest-client.service';
 import { StorageService } from './services/storage.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddImageComponent } from './gallery/add-image/add-image.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +24,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     GalleryAudioDetailsComponent,
     GalleryImageDetailsComponent,
     GalleryVideoDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddImageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [GalleryRestClientService, DetailsRestClient, StorageService],
   bootstrap: [AppComponent]

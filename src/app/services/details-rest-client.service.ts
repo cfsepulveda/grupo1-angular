@@ -29,6 +29,12 @@ export class DetailsRestClient {
     return this.http.post("https://grupo1-app-rest.herokuapp.com/clipAudio/", audioClip).pipe(map(response => { }));
   }
 
+  getUsers(): Observable<any> {
+    return this.http.get("https://grupo1-app-rest.herokuapp.com/registerUser/").pipe(
+      map(reponse => reponse.json())
+    );
+  }
+
 
 }
 
