@@ -11,14 +11,15 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class GalleryVideoDetailsComponent implements OnInit {
 
-  private id: string;
-  private video: any;
-  private clips: any[];
-  private clipForm: FormGroup;
+  id: string;
+  video: any;
+  clipForm: FormGroup;
+  clips: any[];
+  
 
 
 
-  constructor(private storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
+  constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
   ) {
     this.getVideoDetails();
     this.getVideosClips();

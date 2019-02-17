@@ -10,14 +10,14 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class GalleryImageDetailsComponent implements OnInit {
 
-  private id: string;
-  private image: any;
-  private clips: any[];
-  private clipForm: FormGroup;
+  id: string;
+  image: any;
+  clips: any[];
+  clipForm: FormGroup;
 
 
 
-  constructor(private storageService: StorageService, private route: ActivatedRoute) {
+  constructor(public storageService: StorageService, private route: ActivatedRoute) {
     this.getImageDetails();
   }
 

@@ -9,7 +9,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class GalleryComponent implements OnInit {
 
-  constructor(private galleryRestClientService: GalleryRestClientService, private storageService: StorageService) { }
+  constructor(private galleryRestClientService: GalleryRestClientService, public storageService: StorageService) { }
 
   audiosGallery: any[];
   videosGallery: any[];

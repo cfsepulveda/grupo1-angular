@@ -11,14 +11,14 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class GalleryAudioDetailsComponent implements OnInit {
 
-  private id: string;
-  private audio: any;
-  private clips: any[];
-  private clipForm: FormGroup;
+  id: string;
+  audio: any;
+  clips: any[];
+  clipForm: FormGroup;
 
 
 
-  constructor(private storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
+  constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
   ) {
     this.getAudioDetails();
     this.getAudiosClips();
