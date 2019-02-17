@@ -4,6 +4,7 @@ import { GalleryAudioDetailsComponent } from './gallery/gallery-audio-details/ga
 import { GalleryImageDetailsComponent } from './gallery/gallery-image-details/gallery-image-details.component';
 import { GalleryVideoDetailsComponent } from './gallery/gallery-video-details/gallery-video-details.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { RegisterUsersComponent } from './register-users/register-users.component';
 
 const routes: Routes = [
 	{
@@ -21,6 +22,10 @@ const routes: Routes = [
 	{
 		path: 'gallery/video-details/:id',
 		component: GalleryVideoDetailsComponent
+	},
+	{
+		path: 'registerUser',
+		component: RegisterUsersComponent
 	}
 ];
 

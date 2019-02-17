@@ -12,7 +12,9 @@ import { GalleryVideoDetailsComponent } from './gallery/gallery-video-details/ga
 import { NavbarComponent } from './navbar/navbar.component';
 import { DetailsRestClient } from './services/details-rest-client.service';
 import { StorageService } from './services/storage.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterUsersComponent } from './register-users/register-users.component';
+import { RegisterUsersRestClientService } from './services/register-users-rest-client.service';
 
 @NgModule({
   declarations: [
@@ -21,15 +23,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     GalleryAudioDetailsComponent,
     GalleryImageDetailsComponent,
     GalleryVideoDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegisterUsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    FormsModule,
     ReactiveFormsModule
   ],
-  providers: [GalleryRestClientService, DetailsRestClient, StorageService],
+  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
