@@ -36,8 +36,9 @@ export class RegisterUsersComponent implements OnInit {
     const firstName = this.registerForm.get('first_name').value; 
     const lastName = this.registerForm.get('last_name').value;
     const email = this.registerForm.get('email').value;
-    const user = {"username": username, "password": password, "firstname": firstName, "lastname": lastName, "email": email};
-    this.registerUsersRestClientService.register(user)    
+    const user = {'username': username, 'password': password,'first_name': firstName, 'last_name': lastName, 'email': email};
+    const resultado = this.registerUsersRestClientService.register(user);
+    console.log(resultado);
     this.goBack();
   }
 
