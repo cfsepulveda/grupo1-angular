@@ -13,7 +13,7 @@
       <li *ngIf="!this.storageService.isLogged" class="nav-item">
         <a class="nav-link" routerLink="/login">login</a>
       </li>
-      <li  class="nav-item">
+      <li *ngIf="this.storageService.isLogged" class="nav-item">
           <a class="nav-link" routerLink="/gallery/addimage">Adicionar imagen</a>
       </li>
       <li  class="nav-item">
