@@ -6,8 +6,10 @@ import { GalleryVideoDetailsComponent } from './gallery/gallery-video-details/ga
 import { AddImageComponent } from './gallery/add-image/add-image.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { RegisterUsersComponent } from './register-users/register-users.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+	{ path: '', redirectTo: '/gallery', pathMatch: 'full' },
 	{
 		path: 'gallery',
 		component: GalleryComponent
@@ -31,10 +33,15 @@ const routes: Routes = [
 		path: 'registerUser',
 		component: RegisterUsersComponent
 	}
+	,
+	{
+		path: 'login',
+		component: LoginComponent
+	}
 ];
 
 @NgModule({
-	imports: [ RouterModule.forRoot(routes) ],
-	exports: [ RouterModule ]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

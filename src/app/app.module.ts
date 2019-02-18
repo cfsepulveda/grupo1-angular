@@ -17,6 +17,8 @@ import { AddImageComponent } from './gallery/add-image/add-image.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { RegisterUsersRestClientService } from './services/register-users-rest-client.service';
+import { LoginComponent } from './login/login.component';
+import { LoginRestClientService } from './services/login-rest-client.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { RegisterUsersRestClientService } from './services/register-users-rest-c
     NavbarComponent,
     AddImageComponent,
     RegisterUsersComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { RegisterUsersRestClientService } from './services/register-users-rest-c
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService],
+  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService, LoginRestClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
