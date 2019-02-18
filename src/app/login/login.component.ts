@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginRestClientService } from '../services/login-rest-client.service';
 import { StorageService } from '../services/storage.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +18,12 @@ export class LoginComponent implements OnInit {
     private loginRestClientService: LoginRestClientService,
     private storageService: StorageService,
     private router: Router
-    ) {
-      this.storageService.isLogged = false;
-     }
+  ) {
+    this.storageService.isLogged = false;
+  }
 
   ngOnInit() {
+    this.storageService.isLogged = false;
     this.buildForm();
   }
 
@@ -38,9 +39,13 @@ export class LoginComponent implements OnInit {
     const name = this.loginForm.get('user').value;
     const password = this.loginForm.get('password').value;
     const credentials = { "user": name, "password": password };
-    this.router.navigate(['gallery']);
-    this.loginRestClientService.authenticate(credentials).subscribe(response => {
+
+    if (name == "agiles" && password == "Agiles2019") {
       this.storageService.isLogged = true;
-    })
+      this.router.navigate(['gallery']);
+    } else {
+      alert("Usuario o Password invalido");
+      this.loginForm.reset();
+    }
   }
 }
