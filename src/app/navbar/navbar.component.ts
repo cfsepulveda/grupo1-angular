@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public storageService: StorageService) { }
 
   ngOnInit() {
+  }
+
+  public sessionClose(): void {
+    this.storageService.isLogged = false;
   }
 
 }
