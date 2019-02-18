@@ -28,8 +28,8 @@
             </tbody>
         </table>
 
-        <h1>clips</h1>
-        <table class="table table-sm table-dark">
+        <h1 *ngIf="this.storageService.isLogged">clips</h1>
+        <table *ngIf="this.storageService.isLogged" class="table table-sm table-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -50,9 +50,9 @@
             </tbody>
         </table>
 
-        <h1>Agregar Clip</h1>
+        <h1 *ngIf="this.storageService.isLogged">Agregar Clip</h1>
 
-        <form [formGroup]="clipForm" (ngSubmit)="submit()" novalidate>
+        <form *ngIf="this.storageService.isLogged" [formGroup]="clipForm" (ngSubmit)="submit()" novalidate>
             <div class="form-group">
                 <label for="inputClipName">Nombre del clip</label>
                 <input formControlName="name" type="text" class="form-control" id="inputClipName"

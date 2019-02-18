@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="justify-content-center flex-column">
+    <img src="http://www3.uah.es/master_psicopedagogiaUAH/wp-content/uploads/2015/06/galeria_banner.jpg">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Usuario</label>
+        <input formControlName="user" type="text" class="form-control" id="exampleInputEmail1"
+          aria-describedby="user" placeholder="user">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1"
+          placeholder="Password">
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        <a routerLink="/gallery" class="btn btn-primary">Volver</a>
+      </div>
+    </form>
+  </div>
+
+</div>
