@@ -18,17 +18,14 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.galleryRestClientService.getAllVideosGallery().subscribe(data => {
-      console.log(data);
       this.storageService.videosGallery = data;
     })
 
     this.galleryRestClientService.getAllAudiosGallery().subscribe(data => {
-      console.log(data);
       this.storageService.audiosGallery = data;
     })
 
     this.galleryRestClientService.getAllImagesGallery().subscribe(data => {
-      console.log(data);
       this.storageService.imagesGallery = data;
     })
   }

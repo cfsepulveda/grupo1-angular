@@ -5,6 +5,7 @@ import { GalleryImageDetailsComponent } from './gallery/gallery-image-details/ga
 import { GalleryVideoDetailsComponent } from './gallery/gallery-video-details/gallery-video-details.component';
 import { AddImageComponent } from './gallery/add-image/add-image.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { RegisterUsersComponent } from './register-users/register-users.component';
 
 const routes: Routes = [
 	{
@@ -25,6 +26,10 @@ const routes: Routes = [
 	},{
 		path: 'gallery/addimage',
 		component: AddImageComponent
+	},
+	{
+		path: 'registerUser',
+		component: RegisterUsersComponent
 	}
 ];
 
