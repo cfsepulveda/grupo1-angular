@@ -30,7 +30,7 @@ import { LoginRestClientService } from './services/login-rest-client.service';
     GalleryVideoDetailsComponent,
     NavbarComponent,
     AddImageComponent,
-    RegisterUsersComponent
+    RegisterUsersComponent,
     LoginComponent
   ],
   imports: [
