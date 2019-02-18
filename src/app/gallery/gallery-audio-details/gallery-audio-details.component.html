@@ -1,6 +1,6 @@
 <div class="container">
     <div class="justify-content-center flex-column">
-        <audio height="200px" [src]="audio?.url" controls></audio>
+        <audio height="200px" id="audio" [src]="audio?.url" controls></audio>
 
         <h1>Detalles</h1>
         <table class="table table-sm table-dark">
@@ -36,6 +36,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Segundo de Inicio</th>
                     <th scope="col">Segundo de Fin</th>
+                    <th scope="col">Ver clip</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@
                     <td>{{clip.name}}</td>
                     <td>{{clip.secondStart}}</td>
                     <td>{{clip.secondEnd}}</td>
+                    <td> <button (click)="watchClip(i)" class="btn btn-secondary">Reproducir Clip</button></td>
                 </tr>
             </tbody>
         </table>
@@ -70,8 +72,8 @@
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!clipForm.valid">Agregar Clip</button>
         </form>
-
-
+    <br>
+        <button (click)="goBack()" class="btn btn-secondary btn-lg btn-block">Volver</button>
 
     </div>
 

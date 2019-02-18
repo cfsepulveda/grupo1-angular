@@ -3,6 +3,8 @@ import { DetailsRestClient } from 'src/app/services/details-rest-client.service'
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-gallery-video-details',
@@ -15,11 +17,17 @@ export class GalleryVideoDetailsComponent implements OnInit {
   video: any;
   clipForm: FormGroup;
   clips: any[];
-  
+  secondStart: number;
+  secondEnd: number;
 
 
 
-  constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
+
+  constructor(public storageService: StorageService,
+    private route: ActivatedRoute,
+    private detailsRestClient: DetailsRestClient,
+    private formBuilder: FormBuilder,
+    private location: Location,
   ) {
     this.getVideoDetails();
     this.getVideosClips();
@@ -55,9 +63,22 @@ export class GalleryVideoDetailsComponent implements OnInit {
     const clip = { "name": name, "secondStart": secondStart, "secondEnd": secondEnd, "videoName": this.video.name };
     this.detailsRestClient.createVideoClip(clip).subscribe(response => {
       this.getVideosClips();
+      this.clipForm.reset();
     })
 
   }
 
+  public watchClip(i): void {
+    this.secondStart = Number(this.clips[i].secondStart);
+    this.secondEnd = Number(this.clips[i].secondEnd);
+    this.video.url + "#t=" + this.secondStart + "," + this.secondEnd;
+    document.getElementById("video").setAttribute("src", this.video.url + "#t=" + this.secondStart + "," + this.secondEnd);
+    document.getElementById("video").setAttribute("autoplay", "autoplay");
+  }
+
+
+  goBack(): void {
+    this.location.back();
+  }
 
 }
