@@ -17,6 +17,7 @@ import { AddImageComponent } from './gallery/add-image/add-image.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { RegisterUsersRestClientService } from './services/register-users-rest-client.service';
+import { ImageRestClient } from './services/image-rest-client.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { RegisterUsersRestClientService } from './services/register-users-rest-c
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService],
+  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService,ImageRestClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

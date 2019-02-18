@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { DetailsRestClient } from 'src/app/services/details-rest-client.service';
+import { ImageRestClient } from 'src/app/services/image-rest-client.service';
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -23,9 +23,9 @@ export class AddImageComponent implements OnInit {
   }
 
 
-  constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
+  constructor(public storageService: StorageService, private route: ActivatedRoute, private imageRestClient: ImageRestClient, private formBuilder: FormBuilder,
   ) {
-    this.getUsers();
+   
   }
 
   ngOnInit() {
@@ -46,10 +46,6 @@ export class AddImageComponent implements OnInit {
   
   }
 
-  public getUsers(): void {
-    this.detailsRestClient.getUsers().subscribe(data => {
-      this.users=data});
-  }
   public submit(): void {
     const Nombre = this.imageForm.get('Nombre').value;
     const Url = this.Url;
@@ -62,7 +58,7 @@ export class AddImageComponent implements OnInit {
     const Archivo = this.selectFile;
     const imagen = { "name": Nombre,"author":Nombre,"url": Url ,"title":Titulo ,"date":date,"city":Ciudad,"country":Pais,"Descripcion":Descripcion,"type":Tipo,"Archivo":Archivo,"User":1};
     
-    this.detailsRestClient.createImage(imagen).subscribe(response => {
+    this.imageRestClient.createImage(imagen).subscribe(response => {
       alert("Imagen agregada");
     })
 

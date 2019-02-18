@@ -28,7 +28,7 @@ const routes: Routes = [
 		component: AddImageComponent
 	},
 	{
-		path: 'registerUser',
+		path: 'gallery/registerUser',
 		component: RegisterUsersComponent
 	}
 ];
