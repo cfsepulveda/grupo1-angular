@@ -25,6 +25,10 @@ export class DetailsRestClient {
     return this.http.post("https://grupo1-app-rest.herokuapp.com/clipVideo/", videoClip).pipe(map(response => { }));
   }
 
+  createImage(image: any): Observable<any> {
+    return this.http.post("https://grupo1-app-rest.herokuapp.com/images/", image).pipe(map(response => { }));
+  }
+
   createAudioClip(audioClip: any): Observable<any> {
     return this.http.post("https://grupo1-app-rest.herokuapp.com/clipAudio/", audioClip).pipe(map(response => { }));
   }

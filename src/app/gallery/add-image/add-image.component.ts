@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DetailsRestClient } from 'src/app/services/details-rest-client.service';
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-add-image',
   templateUrl: './add-image.component.html',
@@ -14,7 +15,12 @@ export class AddImageComponent implements OnInit {
   users: any;
   image: any;
   imageForm: FormGroup;
-
+  Url: String;
+  selectFile:File;
+  onFileSelected(event) {
+    console.log(event);
+    this.selectFile = event.target.files[0]; 
+  }
 
 
   constructor(public storageService: StorageService, private route: ActivatedRoute, private detailsRestClient: DetailsRestClient, private formBuilder: FormBuilder,
@@ -29,7 +35,13 @@ export class AddImageComponent implements OnInit {
   public buildForm() {
     this.imageForm = this.formBuilder.group({
       Nombre: new FormControl('', Validators.required),
-      Url: new FormControl('', Validators.required)
+     
+      Titulo: new FormControl('', Validators.required),
+      Ciudad: new FormControl('', Validators.required),
+      Pais: new FormControl('', Validators.required),
+      Descripcion : new FormControl('', Validators.required),
+      Tipo : new FormControl('', Validators.required),
+      
     });
   
   }
@@ -37,19 +49,22 @@ export class AddImageComponent implements OnInit {
   public getUsers(): void {
     this.detailsRestClient.getUsers().subscribe(data => {
       this.users=data});
-    alert(this.users);
   }
   public submit(): void {
     const Nombre = this.imageForm.get('Nombre').value;
-    const Url = this.imageForm.get('Url').value;
-  
-    const imagen = { "name": Nombre, "secondStart": Url};
-
-    alert(JSON.stringify(imagen));
-    /*
-    this.detailsRestClient.createVideoClip(clip).subscribe(response => {
-      this.getVideosClips();
-    })*/
+    const Url = this.Url;
+    const Titulo = this.imageForm.get('Titulo').value;
+    const date = new Date();
+    const Ciudad = this.imageForm.get('Ciudad').value;
+    const Pais = this.imageForm.get('Pais').value;
+    const Descripcion = this.imageForm.get('Descripcion').value;
+    const Tipo = this.imageForm.get('Tipo').value;
+    const Archivo = this.selectFile;
+    const imagen = { "name": Nombre,"author":Nombre,"url": Url ,"title":Titulo ,"date":date,"city":Ciudad,"country":Pais,"Descripcion":Descripcion,"type":Tipo,"Archivo":Archivo,"User":1};
+    
+    this.detailsRestClient.createImage(imagen).subscribe(response => {
+      alert("Imagen agregada");
+    })
 
   }
 }
