@@ -12,9 +12,12 @@ import { GalleryVideoDetailsComponent } from './gallery/gallery-video-details/ga
 import { NavbarComponent } from './navbar/navbar.component';
 import { DetailsRestClient } from './services/details-rest-client.service';
 import { StorageService } from './services/storage.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddImageComponent } from './gallery/add-image/add-image.component';
+import { FormsModule } from '@angular/forms';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { RegisterUsersRestClientService } from './services/register-users-rest-client.service';
+import { ImageRestClient } from './services/image-rest-client.service';
 import { LoginComponent } from './login/login.component';
 import { LoginRestClientService } from './services/login-rest-client.service';
 
@@ -26,6 +29,7 @@ import { LoginRestClientService } from './services/login-rest-client.service';
     GalleryImageDetailsComponent,
     GalleryVideoDetailsComponent,
     NavbarComponent,
+    AddImageComponent,
     RegisterUsersComponent,
     LoginComponent
   ],
@@ -33,10 +37,10 @@ import { LoginRestClientService } from './services/login-rest-client.service';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService, LoginRestClientService],
+  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService,ImageRestClient,LoginRestClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

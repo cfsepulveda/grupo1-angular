@@ -7,11 +7,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="gallery">Home</a>
+        </li>
       <li *ngIf="!this.storageService.isLogged" class="nav-item">
         <a class="nav-link" routerLink="/login">login</a>
       </li>
-      <li *ngIf="!this.storageService.isLogged" class="nav-item">
-        <a class="nav-link" routerLink="/registerUser">Registrarse</a>
+      <li  class="nav-item">
+          <a class="nav-link" routerLink="/gallery/addimage">Adicionar imagen</a>
+      </li>
+      <li  class="nav-item">
+       
+        <a class="nav-link" routerLink="/gallery/registerUser">Registrarse</a>
       </li>
       <li *ngIf="this.storageService.isLogged" class="nav-item">
         <a class="nav-link" (click)="sessionClose()">Cerrar Sesion</a>
