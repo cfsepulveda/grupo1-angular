@@ -14,7 +14,14 @@ export class GalleryComponent implements OnInit {
   audiosGallery: any[];
   videosGallery: any[];
   imagesGallery: any[];
-
+  TestList=[{"type":"naturaleza"},{"type":"objetos"},{"type":"carros"}];
+  TestList2=[{"type":"imagen"},{"type":"audio"},{"type":"video"}];
+  selected="";
+  onChange(newValue) {
+    console.log(newValue);
+    this.selected = newValue;
+  
+  }
 
   ngOnInit() {
     this.galleryRestClientService.getAllVideosGallery().subscribe(data => {

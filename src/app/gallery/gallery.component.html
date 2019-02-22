@@ -3,6 +3,21 @@
 <div class="container-fluid">
   <h1>Galeria</h1>
 
+  <h2>Categorias</h2>
+
+  <div class="col-sm-auto">
+    <select [(ngModel)]="selected" (ngModelChange)="onChange($event)">
+      <option *ngFor="let organization of TestList" [value]="organization.type" [ngValue]="organization.type">{{organization.type}}</option>
+    </select>
+  </div>
+  <div class="col-sm-auto">
+    <select [(ngModel)]="selected" (ngModelChange)="onChange($event)">
+      <option *ngFor="let organization of TestList2" [value]="organization.type" [ngValue]="organization.type">{{organization.type}}</option>
+    </select>
+  </div>
+  &nbsp;
+ 
+
   <div class="row">
     <div class="col-sm-auto" *ngFor="let videoGallery of storageService.videosGallery ; let i = index">
       <div class="card" style="width: 18rem;">
