@@ -38,14 +38,18 @@ export class LoginComponent implements OnInit {
   public submit(): void {
     const name = this.loginForm.get('user').value;
     const password = this.loginForm.get('password').value;
-    const credentials = { "user": name, "password": password };
-
-    if (name == "agiles" && password == "Agiles2019") {
+    const credentials = { "login": name, "password": password };
+    this.loginRestClientService.authenticate(credentials).subscribe(response => {
+      console.log(response);
+      this.storageService.userLogged = response;
       this.storageService.isLogged = true;
       this.router.navigate(['gallery']);
-    } else {
+    }, error => {
+      console.log(error);
       alert("Usuario o Password invalido");
       this.loginForm.reset();
     }
+    )
+
   }
 }
