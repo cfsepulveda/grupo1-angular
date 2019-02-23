@@ -50,7 +50,7 @@ export class GalleryAudioDetailsComponent implements OnInit {
 
   public getAudiosClips(): void {
     this.detailsRestClient.getAllAudiosClip().subscribe(data => {
-      this.clips = data.filter((item, index) => item.audioName == this.audio.name);
+      this.clips = data.filter((item, index) => item.audioname == this.audio.name);
     })
   }
 
@@ -58,7 +58,7 @@ export class GalleryAudioDetailsComponent implements OnInit {
     const name = this.clipForm.get('name').value;
     const secondStart = this.clipForm.get('secondStart').value;
     const secondEnd = this.clipForm.get('secondEnd').value;
-    const clip = { "name": name, "secondStart": secondStart, "secondEnd": secondEnd, "audioName": this.audio.name };
+    const clip = { "name": name, "secondstart": secondStart, "secondend": secondEnd, "audioname": this.audio.name, 'email': this.storageService.userLogged.email  };
     this.detailsRestClient.createAudioClip(clip).subscribe(response => {
       this.getAudiosClips();
       this.clipForm.reset();
@@ -66,8 +66,8 @@ export class GalleryAudioDetailsComponent implements OnInit {
   }
 
   public watchClip(i): void {
-    this.secondStart = Number(this.clips[i].secondStart);
-    this.secondEnd = Number(this.clips[i].secondEnd);
+    this.secondStart = Number(this.clips[i].secondstart);
+    this.secondEnd = Number(this.clips[i].secondend);
     this.audio.url + "#t=" + this.secondStart + "," + this.secondEnd;
     document.getElementById("audio").setAttribute("src", this.audio.url + "#t=" + this.secondStart + "," + this.secondEnd);
     document.getElementById("audio").setAttribute("autoplay", "autoplay");
