@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterUsersRestClientService } from '../services/register-users-rest-client.service';
@@ -14,6 +14,7 @@ export class RegisterUsersComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
     private registerUsersRestClientService: RegisterUsersRestClientService,
@@ -21,11 +22,15 @@ export class RegisterUsersComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      login: new FormControl(),
-      name: new FormControl(),
-      lastname: new FormControl(),
-      password: new FormControl(),
-      email: new FormControl()
+      login: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+      photo: new FormControl(),
+      photoFile: new FormControl()
     });
 
   }
@@ -41,11 +46,16 @@ export class RegisterUsersComponent implements OnInit {
     const photo = this.registerForm.get('photo').value;
     const photoFile = this.registerForm.get('photoFile').value;
     const user = {'login': login, 'password': password,'name': name, 'lastname': lastname, 'email': email, 'photo':photo, 'city':city, 'country':country};
-    const resultado = this.registerUsersRestClientService.register(user);
-    console.log(resultado);
-    this.goBack();
+    this.registerUsersRestClientService.register(user).subscribe(response => {
+      console.log(response);
+      this.router.navigate(['gallery']);
+    }, error => {
+      console.log(error);
+      alert("Formulario Invalido");
+      this.registerForm.reset();
+    }
+    );
   }
-
 
   goBack(): void {
     this.location.back();
