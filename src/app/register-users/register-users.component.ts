@@ -12,6 +12,7 @@ import { RegisterUsersRestClientService } from '../services/register-users-rest-
 export class RegisterUsersComponent implements OnInit {
 
   registerForm: FormGroup;
+  selectFile:File;
 
   constructor(
     private router: Router,
@@ -30,10 +31,14 @@ export class RegisterUsersComponent implements OnInit {
       city: new FormControl('', Validators.required),
       country: new FormControl('', Validators.required),
       photo: new FormControl(),
-      photoFile: new FormControl()
     });
 
-  }
+  };
+
+  onFileSelected(event) {
+    console.log(event);
+    this.selectFile = event.target.files[0]; 
+  };
 
   register() {
     const login = this.registerForm.get('login').value; 
@@ -43,8 +48,11 @@ export class RegisterUsersComponent implements OnInit {
     const email = this.registerForm.get('email').value;
     const city = this.registerForm.get('city').value;
     const country = this.registerForm.get('country').value;
-    const photo = this.registerForm.get('photo').value;
-    const photoFile = this.registerForm.get('photoFile').value;
+    var photo = this.registerForm.get('photo').value;
+    const photoFile = this.selectFile;
+    if(photoFile != null){
+      photo = photoFile;
+    }
     const user = {'login': login, 'password': password,'name': name, 'lastname': lastname, 'email': email, 'photo':photo, 'city':city, 'country':country};
     this.registerUsersRestClientService.register(user).subscribe(response => {
       console.log(response);
@@ -55,10 +63,10 @@ export class RegisterUsersComponent implements OnInit {
       this.registerForm.reset();
     }
     );
-  }
+  };
 
   goBack(): void {
     this.location.back();
-  }
+  };
 
 }
