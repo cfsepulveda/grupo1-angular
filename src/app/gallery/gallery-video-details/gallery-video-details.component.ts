@@ -52,7 +52,7 @@ export class GalleryVideoDetailsComponent implements OnInit {
 
   public getVideosClips(): void {
     this.detailsRestClient.getAllVideosClip().subscribe(data => {
-      this.clips = data.filter((item, index) => item.videoName == this.video.name);
+      this.clips = data.filter((item, index) => item.videoname == this.video.name);
     })
   }
 
@@ -60,7 +60,7 @@ export class GalleryVideoDetailsComponent implements OnInit {
     const name = this.clipForm.get('name').value;
     const secondStart = this.clipForm.get('secondStart').value;
     const secondEnd = this.clipForm.get('secondEnd').value;
-    const clip = { "name": name, "secondStart": secondStart, "secondEnd": secondEnd, "videoName": this.video.name };
+    const clip = { "name": name, "secondstart": secondStart, "secondend": secondEnd, "videoname": this.video.name, 'email': this.storageService.userLogged.email };
     this.detailsRestClient.createVideoClip(clip).subscribe(response => {
       this.getVideosClips();
       this.clipForm.reset();
@@ -69,8 +69,8 @@ export class GalleryVideoDetailsComponent implements OnInit {
   }
 
   public watchClip(i): void {
-    this.secondStart = Number(this.clips[i].secondStart);
-    this.secondEnd = Number(this.clips[i].secondEnd);
+    this.secondStart = Number(this.clips[i].secondstart);
+    this.secondEnd = Number(this.clips[i].secondend);
     this.video.url + "#t=" + this.secondStart + "," + this.secondEnd;
     document.getElementById("video").setAttribute("src", this.video.url + "#t=" + this.secondStart + "," + this.secondEnd);
     document.getElementById("video").setAttribute("autoplay", "autoplay");

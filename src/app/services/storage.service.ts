@@ -7,6 +7,7 @@ export class StorageService {
   public videosGallery: any[];
   public audiosGallery: any[];
   public isLogged: boolean;
+  public userLogged: any;
 
   constructor() { }
 }

@@ -43,8 +43,8 @@
                 <tr *ngFor="let clip of clips; let i = index">
                     <th scope="row">{{i}}</th>
                     <td>{{clip.name}}</td>
-                    <td>{{clip.secondStart}}</td>
-                    <td>{{clip.secondEnd}}</td>
+                    <td>{{clip.secondstart}}</td>
+                    <td>{{clip.secondend}}</td>
                     <td> <button (click)="watchClip(i)" class="btn btn-secondary">Reproducir Clip</button></td>
                 </tr>
             </tbody>
