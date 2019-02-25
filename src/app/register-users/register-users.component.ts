@@ -12,7 +12,6 @@ import { RegisterUsersRestClientService } from '../services/register-users-rest-
 export class RegisterUsersComponent implements OnInit {
 
   registerForm: FormGroup;
-  selectFile:File;
 
   constructor(
     private router: Router,
@@ -35,11 +34,6 @@ export class RegisterUsersComponent implements OnInit {
 
   };
 
-  onFileSelected(event) {
-    console.log(event);
-    this.selectFile = event.target.files[0]; 
-  };
-
   register() {
     const login = this.registerForm.get('login').value; 
     const password = this.registerForm.get('password').value;
@@ -48,11 +42,7 @@ export class RegisterUsersComponent implements OnInit {
     const email = this.registerForm.get('email').value;
     const city = this.registerForm.get('city').value;
     const country = this.registerForm.get('country').value;
-    var photo = this.registerForm.get('photo').value;
-    const photoFile = this.selectFile;
-    if(photoFile != null){
-      photo = photoFile;
-    }
+    const photo = this.registerForm.get('photo').value;
     const user = {'login': login, 'password': password,'name': name, 'lastname': lastname, 'email': email, 'photo':photo, 'city':city, 'country':country};
     this.registerUsersRestClientService.register(user).subscribe(response => {
       console.log(response);
