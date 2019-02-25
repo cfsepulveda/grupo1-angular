@@ -20,6 +20,7 @@ import { RegisterUsersRestClientService } from './services/register-users-rest-c
 import { ImageRestClient } from './services/image-rest-client.service';
 import { LoginComponent } from './login/login.component';
 import { LoginRestClientService } from './services/login-rest-client.service';
+import { FilterPipe }from './gallery/filter.pipe'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoginRestClientService } from './services/login-rest-client.service';
     NavbarComponent,
     AddImageComponent,
     RegisterUsersComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

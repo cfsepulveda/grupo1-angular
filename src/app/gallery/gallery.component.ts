@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { GalleryRestClientService } from '../services/gallery-rest-client.service';
 import { StorageService } from '../services/storage.service';
 
+
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
+
+
 export class GalleryComponent implements OnInit {
 
   constructor(private galleryRestClientService: GalleryRestClientService, public storageService: StorageService) { }
@@ -14,8 +17,7 @@ export class GalleryComponent implements OnInit {
   audiosGallery: any[];
   videosGallery: any[];
   imagesGallery: any[];
-  TestList=[{"type":"naturaleza"},{"type":"objetos"},{"type":"carros"}];
-  TestList2=[{"type":"imagen"},{"type":"audio"},{"type":"video"}];
+  TestList2=[{"type":"imagen"},{"type":"audio"},{"type":"video"},{"type":"reset"}];
   selected="";
   onChange(newValue) {
     console.log(newValue);
