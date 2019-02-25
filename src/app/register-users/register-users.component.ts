@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterUsersRestClientService } from '../services/register-users-rest-client.service';
@@ -14,6 +14,7 @@ export class RegisterUsersComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
     private registerUsersRestClientService: RegisterUsersRestClientService,
@@ -21,30 +22,41 @@ export class RegisterUsersComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      username: new FormControl(),
-      first_name: new FormControl(),
-      last_name: new FormControl(),
-      password: new FormControl(),
-      email: new FormControl()
+      login: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+      photo: new FormControl(),
     });
 
-  }
+  };
 
   register() {
-    const username = this.registerForm.get('username').value; 
+    const login = this.registerForm.get('login').value; 
     const password = this.registerForm.get('password').value;
-    const firstName = this.registerForm.get('first_name').value; 
-    const lastName = this.registerForm.get('last_name').value;
+    const name = this.registerForm.get('name').value; 
+    const lastname = this.registerForm.get('lastname').value;
     const email = this.registerForm.get('email').value;
-    const user = {'username': username, 'password': password,'first_name': firstName, 'last_name': lastName, 'email': email};
-    const resultado = this.registerUsersRestClientService.register(user);
-    console.log(resultado);
-    this.goBack();
-  }
-
+    const city = this.registerForm.get('city').value;
+    const country = this.registerForm.get('country').value;
+    const photo = this.registerForm.get('photo').value;
+    const user = {'login': login, 'password': password,'name': name, 'lastname': lastname, 'email': email, 'photo':photo, 'city':city, 'country':country};
+    this.registerUsersRestClientService.register(user).subscribe(response => {
+      console.log(response);
+      this.router.navigate(['gallery']);
+    }, error => {
+      console.log(error);
+      alert("Formulario Invalido");
+      this.registerForm.reset();
+    }
+    );
+  };
 
   goBack(): void {
     this.location.back();
-  }
+  };
 
 }
