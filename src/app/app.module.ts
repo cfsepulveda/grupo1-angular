@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryRestClientService } from './services/gallery-rest-client.service';
+import { CategoryRestClientService } from './services/category-rest-client.service';
+
 import { HttpModule } from '@angular/http';
 import { GalleryAudioDetailsComponent } from './gallery/gallery-audio-details/gallery-audio-details.component';
 import { GalleryImageDetailsComponent } from './gallery/gallery-image-details/gallery-image-details.component';
@@ -21,6 +23,8 @@ import { ImageRestClient } from './services/image-rest-client.service';
 import { LoginComponent } from './login/login.component';
 import { LoginRestClientService } from './services/login-rest-client.service';
 import { FilterPipe }from './gallery/filter.pipe'
+import { FilterPipeCategory }from './gallery/filter.pipe.category'
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { FilterPipe }from './gallery/filter.pipe'
     AddImageComponent,
     RegisterUsersComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    FilterPipeCategory
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,7 @@ import { FilterPipe }from './gallery/filter.pipe'
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [GalleryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService,ImageRestClient,LoginRestClientService],
+  providers: [GalleryRestClientService, CategoryRestClientService, DetailsRestClient, StorageService, RegisterUsersRestClientService,ImageRestClient,LoginRestClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

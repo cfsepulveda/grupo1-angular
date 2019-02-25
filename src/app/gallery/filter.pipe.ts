@@ -8,16 +8,16 @@ export class FilterPipe implements PipeTransform {
         var result;
         if(!items) return [];
         if(!searchText) return items;
-        if(searchText=="imagen"){
-            result =items.filter(op=>{return op.url.includes(".jpg")});
+        if(searchText=="Imagen"){
+            result =items.filter(op=>{return op.url.includes(".jpg")+op.url.includes(".png")});
         }
-        if(searchText=="audio"){
+        if(searchText=="Audio"){
             result =items.filter(op=>{return op.url.includes(".mp3")});
         } 
-        if(searchText=="video"){
+        if(searchText=="Video"){
            result =items.filter(op=>{return op.url.includes(".mp4")});
         }
-        if(searchText=="reset"){
+        if(searchText=="Todo"){
             result =items;
         }       
       console.log(result);

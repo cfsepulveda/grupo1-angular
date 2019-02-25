@@ -4,17 +4,23 @@
   <h1>Galeria</h1>
 
   <h2>Categorias</h2>
-
+  &nbsp;
   <div class="col-sm-auto">
     <select [(ngModel)]="selected" (ngModelChange)="onChange($event)">
-      <option *ngFor="let organization of TestList2" [value]="organization.type" [ngValue]="organization.type">{{organization.type}}</option>
+      <option *ngFor="let organization of TestList2" [value]="organization.Name" [ngValue]="organization.Name">{{organization.Name}}</option>
     </select>
   </div>
   &nbsp;
- 
+  <div class="col-sm-auto">
+    <select [(ngModel)]="selected2" (ngModelChange)="onChange2($event)">
+      <option *ngFor="let organization of TestList" [value]="organization.description" [ngValue]="organization.description">{{organization.description}}</option>
+    </select>
+  </div>
+  &nbsp;
+  &nbsp;
 
   <div class="row">
-    <div class="col-sm-auto" *ngFor="let videoGallery of storageService.videosGallery | filter : selected; let i = index">
+    <div class="col-sm-auto" *ngFor="let videoGallery of storageService.videosGallery | filter : selected  | filter2 : selected2 ; let i = index">
       <div class="card" style="width: 18rem;">
         <video height="200px" [src]="videoGallery.url" controls></video>
         <div class="card-body">
@@ -26,7 +32,7 @@
       </div>
     </div>
 
-    <div class="col-sm-auto" *ngFor="let imageGallery of storageService.imagesGallery| filter : selected ; let i = index">
+    <div class="col-sm-auto" *ngFor="let imageGallery of storageService.imagesGallery| filter : selected  | filter2 : selected2 ; let i = index">
       <div class="card" style="width: 18rem;">
         <img height="200px" [src]="imageGallery.url">
         <div class="card-body">
@@ -38,7 +44,7 @@
       </div>
     </div>
 
-    <div class="col-sm-auto" *ngFor="let audioGallery of storageService.audiosGallery| filter : selected ; let i = index">
+    <div class="col-sm-auto" *ngFor="let audioGallery of storageService.audiosGallery| filter : selected  | filter2 : selected2; let i = index">
       <div class="card" style="width: 18rem;">
         <div style="width:90%">
           <audio [src]="audioGallery.url" controls></audio>
